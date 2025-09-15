@@ -34,15 +34,9 @@ export default function Tela2({ navigation }) {
           color="#4E89AE"
           onPress={() => navigation.navigate('AbrirChamado')} 
         />
-        <View style={styles.space} />
-        <Button
-          title="Pesquisar Chamado"
-          color="#4E89AE"
-          onPress={() => navigation.navigate('PesquisarChamado')}  // Navegação para a Tela 5
-        />
       </View>
 
-      <Text style={styles.link} onPress={() => console.log("Acessar chamados existentes")}>
+      <Text style={styles.link} onPress={() => navigation.navigate('PesquisarChamado')}>
         Já tem um chamado? Clique aqui
       </Text>
     </View>
@@ -78,13 +72,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     width: '100%',
     marginTop: 20,
-  },
-  space: {
-    width: 10, // Espaço entre os botões
+    justifyContent: 'center', // Centraliza o botão
+    alignItems: 'center', // Centraliza o botão
   },
   link: {
     color: '#A0A0A0',
