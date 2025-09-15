@@ -8,7 +8,6 @@ export default function Tela3({ navigation }) {
   const [imageUri, setImageUri] = useState(null); 
   const [hasPermission, setHasPermission] = useState(null); 
 
-  
   useEffect(() => {
     (async () => {
       const cameraPermission = await ImagePicker.requestCameraPermissionsAsync();
@@ -17,7 +16,6 @@ export default function Tela3({ navigation }) {
     })();
   }, []);
 
-  
   const handleImagePick = async () => {
     if (!hasPermission) {
       alert('Você precisa de permissões para acessar a galeria!');
@@ -36,11 +34,16 @@ export default function Tela3({ navigation }) {
     }
   };
 
+  const handleSubmit = () => {
+    console.log('Chamado enviado!');
+   
+    navigation.navigate('Feedback');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Abrir Chamado</Text>
 
-     
       <TextInput
         style={styles.input}
         placeholder="Digite o assunto"
@@ -48,7 +51,6 @@ export default function Tela3({ navigation }) {
         onChangeText={setAssunto}
       />
 
-      
       <TextInput
         style={[styles.input, styles.textArea]}  
         placeholder="Digite a descrição"
@@ -58,15 +60,12 @@ export default function Tela3({ navigation }) {
         textAlignVertical="top" 
       />
 
-    
       <View style={styles.imageContainer}>
         <TouchableOpacity onPress={handleImagePick}>
           <View style={styles.imageWrapper}>
             {imageUri ? (
-           
               <Image source={{ uri: imageUri }} style={styles.image} />
             ) : (
-              
               <Image source={require('./assets/Camera.png')} style={styles.image} />
             )}
           </View>
@@ -74,7 +73,11 @@ export default function Tela3({ navigation }) {
         <Text style={styles.imageText}>Se possível, anexe uma imagem</Text>
       </View>
 
-      <Button title="Enviar" color="#4E89AE" onPress={() => {}} />
+      <Button 
+        title="Enviar" 
+        color="#4E89AE" 
+        onPress={handleSubmit}  
+      />
 
       <TouchableOpacity onPress={() => console.log("Acessar chamados existentes")}>
         <Text style={styles.link}>Já tem um chamado? Clique aqui</Text>

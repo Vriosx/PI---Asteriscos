@@ -7,7 +7,6 @@ export default function Tela2({ navigation }) {
       <Text style={styles.title}>Abrir Chamado</Text>
       <Text style={styles.subtitle}>Por favor, confirme as informações abaixo</Text>
 
-     
       <TextInput
         style={styles.input}
         placeholder="Modelo do forno"
@@ -15,7 +14,6 @@ export default function Tela2({ navigation }) {
         editable={false} 
       />
 
-      
       <TextInput
         style={styles.input}
         placeholder="Endereço da instalação"
@@ -23,7 +21,6 @@ export default function Tela2({ navigation }) {
         editable={false} 
       />
 
-     
       <TextInput
         style={styles.input}
         placeholder="Telefone para contato"
@@ -31,14 +28,20 @@ export default function Tela2({ navigation }) {
         editable={true} 
       />
 
-      
-      <Button
-        title="Abrir Chamado"
-        color="#4E89AE"
-        onPress={() => navigation.navigate('AbrirChamado')} 
-      />
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Abrir Chamado"
+          color="#4E89AE"
+          onPress={() => navigation.navigate('AbrirChamado')} 
+        />
+        <View style={styles.space} />
+        <Button
+          title="Pesquisar Chamado"
+          color="#4E89AE"
+          onPress={() => navigation.navigate('PesquisarChamado')}  // Navegação para a Tela 5
+        />
+      </View>
 
-      
       <Text style={styles.link} onPress={() => console.log("Acessar chamados existentes")}>
         Já tem um chamado? Clique aqui
       </Text>
@@ -73,6 +76,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 10,
     borderRadius: 5,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 20,
+  },
+  space: {
+    width: 10, // Espaço entre os botões
   },
   link: {
     color: '#A0A0A0',
