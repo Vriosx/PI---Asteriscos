@@ -1,66 +1,81 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Modal } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 
-export default function DetalheChamadoScreen() {
+export default function DetalheChamadoScreen({ route }) {
+  const { DetalheChamado } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
+  const [status, setStatus] = useState(DetalheChamado.status);
+
+  const atualizarStatus = (novoStatus) => {
+    setStatus(novoStatus);
+    setModalVisible(false);
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modelo do forno</Text>
-      <Text style={styles.status}>Aberto 🔴</Text>
+      {/* Cabeçalho */}
+      <Text style={styles.header}>{DetalheChamado.forno}</Text>
+      <Text style={[
+        styles.status,
+        { color: status === "Aberto" ? "red" : status === "Em andamento" ? "orange" : "green" }
+      ]}>
+        {status}
+      </Text>
 
-      <View style={styles.inputGroup}>
+      {/* Informações */}
+      <View style={styles.infoBox}>
+        <Text style={styles.label}>Forno:</Text>
+        <Text style={styles.value}>{DetalheChamado.forno}</Text>
+
+        <Text style={styles.label}>Defeito:</Text>
+        <Text style={styles.value}>{DetalheChamado.defeito}</Text>
+
         <Text style={styles.label}>Responsável:</Text>
-        <TextInput style={styles.input} placeholder="Nome" placeholderTextColor="#999" />
-      </View>
+        <Text style={styles.value}>{DetalheChamado.responsavel}</Text>
 
-      <View style={styles.inputGroup}>
         <Text style={styles.label}>Contato:</Text>
-        <TextInput style={styles.input} placeholder="Telefone" placeholderTextColor="#999" />
-      </View>
+        <Text style={styles.value}>{DetalheChamado.contato}</Text>
 
-      <View style={styles.inputGroup}>
         <Text style={styles.label}>Endereço:</Text>
-        <TextInput style={styles.input} placeholder="Endereço" placeholderTextColor="#999" />
+        <Text style={styles.value}>{DetalheChamado.endereco}</Text>
+
+        <Text style={styles.label}>Defeito detalhado:</Text>
+        <Text style={styles.value}>{DetalheChamado.detalhe}</Text>
       </View>
 
-      <View style={styles.inputGroup}>
-        <Text style={styles.label}>Defeito relatado:</Text>
-        <TextInput
-          style={[styles.input, { height: 80 }]}
-          multiline
-          placeholder="Descrição"
-          placeholderTextColor="#999"
-        />
-      </View>
-
-      <TouchableOpacity style={styles.btn} onPress={() => setModalVisible(true)}>
-        <Ionicons name="sync-outline" size={24} color="#fff" />
-        <Text style={styles.btnText}>Atualizar status</Text>
+      <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
+        <Text style={styles.buttonText}>Atualizar status</Text>
       </TouchableOpacity>
 
-      {/* POP-UP */}
-      <Modal visible={modalVisible} transparent animationType="slide">
-        <View style={styles.modalBackground}>
-          <View style={styles.modalBox}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Atualizar status</Text>
-            
-            <TouchableOpacity style={styles.statusBtn}>
-              <View style={[styles.dot, { backgroundColor: "orange" }]} />
-              <Text style={styles.statusText}>Em andamento</Text>
-            </TouchableOpacity>
 
-            <TouchableOpacity style={styles.statusBtn}>
-              <View style={[styles.dot, { backgroundColor: "green" }]} />
-              <Text style={styles.statusText}>Concluído</Text>
+            <TouchableOpacity
+              style={[styles.statusButton, { backgroundColor: "orange" }]}
+              onPress={() => atualizarStatus("Em andamento")}
+            >
+              <Text style={styles.statusButtonText}>Em andamento</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={[styles.btn, { backgroundColor: "gray" }]}
+              style={[styles.statusButton, { backgroundColor: "green" }]}
+              onPress={() => atualizarStatus("Concluído")}
+            >
+              <Text style={styles.statusButtonText}>Concluído</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[styles.statusButton, { backgroundColor: "gray" }]}
               onPress={() => setModalVisible(false)}
             >
-              <Text style={styles.btnText}>Fechar</Text>
+              <Text style={styles.statusButtonText}>Cancelar</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -70,53 +85,18 @@ export default function DetalheChamadoScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#00111A", padding: 20 },
-  title: { color: "#fff", fontSize: 20, fontWeight: "bold" },
-  status: { color: "#f55", marginVertical: 10 },
-  inputGroup: { marginBottom: 10 },
-  label: { color: "#fff", marginBottom: 4 },
-  input: {
-    backgroundColor: "#0D1B2A",
-    color: "#fff",
-    padding: 8,
-    borderRadius: 8,
-  },
-  btn: {
-    backgroundColor: "#0077ff",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 12,
-    borderRadius: 10,
-    marginTop: 15,
-  },
-  btnText: { color: "#fff", fontWeight: "bold", marginLeft: 8 },
-  modalBackground: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
-  },
-  modalBox: {
-    backgroundColor: "#0D1B2A",
-    padding: 20,
-    borderRadius: 12,
-    width: "80%",
-  },
-  modalTitle: { color: "#fff", fontSize: 18, marginBottom: 15 },
-  statusBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    padding: 10,
-    borderRadius: 8,
-    marginBottom: 10,
-  },
-  dot: {
-    width: 15,
-    height: 15,
-    borderRadius: 8,
-    marginRight: 10,
-  },
-  statusText: { fontWeight: "bold" },
+  container: { flex: 1, backgroundColor: "#001428", padding: 20 },
+  header: { fontSize: 22, fontWeight: "bold", color: "#fff", textAlign: "center" },
+  status: { textAlign: "center", marginBottom: 20, fontSize: 16 },
+  infoBox: { backgroundColor: "#0d2b45", padding: 15, borderRadius: 10, marginBottom: 20 },
+  label: { color: "#bbb", marginTop: 10, fontWeight: "bold" },
+  value: { color: "#fff", marginBottom: 5 },
+  button: { backgroundColor: "#1e90ff", padding: 15, borderRadius: 8, alignItems: "center" },
+  buttonText: { color: "#fff", fontWeight: "bold" },
+
+  modalOverlay: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "rgba(0,0,0,0.5)" },
+  modalContent: { backgroundColor: "#fff", padding: 20, borderRadius: 10, width: "80%", alignItems: "center" },
+  modalTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 15 },
+  statusButton: { padding: 12, borderRadius: 8, marginVertical: 5, width: "100%", alignItems: "center" },
+  statusButtonText: { color: "#fff", fontWeight: "bold" }
 });
