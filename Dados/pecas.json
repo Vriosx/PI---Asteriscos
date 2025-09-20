@@ -1,0 +1,12 @@
+[
+  { "nome": "Resistência", "valor": 120.0, "estoque": 10 },
+  { "nome": "Termostato", "valor": 80.0, "estoque": 15 },
+  { "nome": "Ventoinha", "valor": 60.0, "estoque": 20 },
+  { "nome": "Painel de controle", "valor": 200.0, "estoque": 5 },
+  { "nome": "Porta do forno", "valor": 150.0, "estoque": 7 },
+  { "nome": "Botão liga/desliga", "valor": 25.0, "estoque": 30 },
+  { "nome": "Vidro frontal", "valor": 90.0, "estoque": 12 },
+  { "nome": "Isolante térmico", "valor": 40.0, "estoque": 25 },
+  { "nome": "Lâmpada interna", "valor": 15.0, "estoque": 50 },
+  { "nome": "Cabo de alimentação", "valor": 30.0, "estoque": 40 }
+]

@@ -1,127 +1,121 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function App() {
-  const chamados = [
-    {
-      id: "1",
-      responsavel: "Nome responsável",
-      endereco: "Rua Brooklin, 279",
-      descricao: "Não esquenta direito",
-      status: "Aberto",
-    },
-    {
-      id: "2",
-      responsavel: "Nome responsável",
-      endereco: "Rua Brooklin, 278",
-      descricao: "Não esquenta direito",
-      status: "Finalizado",
-    },
-  ];
+const chamados = [
+  {
+    id: 1,
+    forno: "Forno Elétrico X",
+    defeito: "Não esquenta direito",
+    status: "Aberto",
+    responsavel: "João",
+    contato: "(11) 99999-9999",
+    endereco: "Rua Brooklin, 279",
+    detalhe: "O forno demora mais de 20 minutos para aquecer corretamente.",
+  },
+  {
+    id: 2,
+    forno: "Forno Fischer",
+    defeito: "Timer quebrado",
+    status: "Finalizado",
+    responsavel: "Maria",
+    contato: "(11) 98888-8888",
+    endereco: "Rua Augusta, 150",
+    detalhe: "O timer não está funcionando e precisa ser substituído.",
+  },
+];
 
+export default function ChamadosScreen({ navigation }) {
   const renderChamado = ({ item }) => (
-    <View style={styles.card}>
-      <Text style={styles.responsavel}>{item.responsavel}</Text>
-
-      <View style={styles.row}>
-        <Ionicons name="location" size={16} color="#fff" />
-        <Text style={styles.text}>{item.endereco}</Text>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => navigation.navigate("DetalheChamado", { chamado: item })}
+    >
+      <View style={styles.cardHeader}>
+        <Ionicons name="flame-outline" size={22} color="#fff" />
+        <Text style={styles.nome}>{item.forno}</Text>
       </View>
 
-      <View style={styles.row}>
-        <Ionicons name="alert-circle-outline" size={16} color="#fff" />
-        <Text style={styles.text}>{item.descricao}</Text>
-      </View>
+      <Text style={styles.textoSecundario}>
+        <Ionicons name="location-outline" size={16} color="#bbb" /> {item.endereco}
+      </Text>
+      <Text style={styles.textoSecundario}>
+        <Ionicons name="alert-circle-outline" size={16} color="#bbb" /> {item.defeito}
+      </Text>
+
+      <Text style={styles.textoSecundario}>
+        <Ionicons name="person-outline" size={16} color="#bbb" /> {item.responsavel} | {item.contato}
+      </Text>
 
       <View
         style={[
-          styles.statusContainer,
-          item.status === "Aberto" ? styles.aberto : styles.finalizado,
+          styles.status,
+          { backgroundColor: item.status === "Aberto" ? "#e63946" : "#2a9d8f" },
         ]}
       >
+        <Ionicons
+          name={item.status === "Aberto" ? "time-outline" : "checkmark-circle-outline"}
+          size={16}
+          color="#fff"
+        />
         <Text style={styles.statusText}>{item.status}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Meus chamados</Text>
+      <Text style={styles.title}>📋 Meus chamados</Text>
 
       <FlatList
         data={chamados}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={renderChamado}
-        contentContainerStyle={{ paddingBottom: 80 }}
+        contentContainerStyle={{ paddingBottom: 20 }}
       />
-      {/* Barra inferior */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#00111A",
-    paddingHorizontal: 20,
-    paddingTop: 50,
-  },
+  container: { flex: 1, backgroundColor: "#001428", padding: 20 },
   title: {
     color: "#fff",
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
   },
   card: {
-    backgroundColor: "#0D1B2A",
+    backgroundColor: "#0d2b45",
     padding: 15,
     borderRadius: 12,
     marginBottom: 15,
-    position: "relative",
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 5,
   },
-  responsavel: {
-    color: "#fff",
-    fontWeight: "bold",
+  cardHeader: {
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 8,
   },
-  row: {
+  nome: { color: "#fff", fontSize: 18, fontWeight: "bold", marginLeft: 8 },
+  textoSecundario: { color: "#bbb", marginTop: 2, fontSize: 14 },
+  status: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 5,
-  },
-  text: {
-    color: "#fff",
-    marginLeft: 6,
-  },
-  statusContainer: {
-    position: "absolute",
-    top: 15,
-    right: 15,
-    paddingHorizontal: 12,
+    marginTop: 10,
     paddingVertical: 4,
+    paddingHorizontal: 10,
     borderRadius: 8,
-  },
-  aberto: {
-    backgroundColor: "#ffcccc",
-  },
-  finalizado: {
-    backgroundColor: "#ccffcc",
+    alignSelf: "flex-start",
   },
   statusText: {
+    color: "#fff",
     fontWeight: "bold",
-    color: "#000",
-  },
-  bottomBar: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: "#00111A",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    paddingVertical: 12,
+    marginLeft: 5,
+    fontSize: 14,
   },
 });

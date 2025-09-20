@@ -1,0 +1,7 @@
+[
+  { "modelo": "Forno 1", "endereco": "Rua 1, 101", "data_instalacao": "2024-01-10" },
+  { "modelo": "Forno 2", "endereco": "Rua 2, 102", "data_instalacao": "2024-02-15" },
+  { "modelo": "Forno 3", "endereco": "Rua 3, 103", "data_instalacao": "2024-03-20" },
+  { "modelo": "Forno 4", "endereco": "Rua 4, 104", "data_instalacao": "2024-04-25" },
+  { "modelo": "Forno 5", "endereco": "Rua 5, 105", "data_instalacao": "2024-05-30" }
+]

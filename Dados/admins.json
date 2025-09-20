@@ -1,0 +1,12 @@
+[
+  {
+    "email": "admin",
+    "senha": "admin",
+    "telefone": "(11) 99999-1111"
+  },
+  {
+    "email": "admin2@empresa.com",
+    "senha": "abcdef",
+    "telefone": "(11) 99999-2222"
+  }
+]

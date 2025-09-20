@@ -1,0 +1,22 @@
+[
+  { "nome": "Cliente 1", "endereco": "Rua 1, 101", "telefone": "(11) 90000-0001", "forno_instalado": "Forno 1" },
+  { "nome": "Cliente 2", "endereco": "Rua 2, 102", "telefone": "(11) 90000-0002", "forno_instalado": "Forno 2" },
+  { "nome": "Cliente 3", "endereco": "Rua 3, 103", "telefone": "(11) 90000-0003", "forno_instalado": "Forno 3" },
+  { "nome": "Cliente 4", "endereco": "Rua 4, 104", "telefone": "(11) 90000-0004", "forno_instalado": "Forno 4" },
+  { "nome": "Cliente 5", "endereco": "Rua 5, 105", "telefone": "(11) 90000-0005", "forno_instalado": "Forno 5" },
+  { "nome": "Cliente 6", "endereco": "Rua 6, 106", "telefone": "(11) 90000-0006", "forno_instalado": "Forno 1" },
+  { "nome": "Cliente 7", "endereco": "Rua 7, 107", "telefone": "(11) 90000-0007", "forno_instalado": "Forno 2" },
+  { "nome": "Cliente 8", "endereco": "Rua 8, 108", "telefone": "(11) 90000-0008", "forno_instalado": "Forno 3" },
+  { "nome": "Cliente 9", "endereco": "Rua 9, 109", "telefone": "(11) 90000-0009", "forno_instalado": "Forno 4" },
+  { "nome": "Cliente 10", "endereco": "Rua 10, 110", "telefone": "(11) 90000-0010", "forno_instalado": "Forno 5" },
+  { "nome": "Cliente 11", "endereco": "Rua 11, 111", "telefone": "(11) 90000-0011", "forno_instalado": "Forno 1" },
+  { "nome": "Cliente 12", "endereco": "Rua 12, 112", "telefone": "(11) 90000-0012", "forno_instalado": "Forno 2" },
+  { "nome": "Cliente 13", "endereco": "Rua 13, 113", "telefone": "(11) 90000-0013", "forno_instalado": "Forno 3" },
+  { "nome": "Cliente 14", "endereco": "Rua 14, 114", "telefone": "(11) 90000-0014", "forno_instalado": "Forno 4" },
+  { "nome": "Cliente 15", "endereco": "Rua 15, 115", "telefone": "(11) 90000-0015", "forno_instalado": "Forno 5" },
+  { "nome": "Cliente 16", "endereco": "Rua 16, 116", "telefone": "(11) 90000-0016", "forno_instalado": "Forno 1" },
+  { "nome": "Cliente 17", "endereco": "Rua 17, 117", "telefone": "(11) 90000-0017", "forno_instalado": "Forno 2" },
+  { "nome": "Cliente 18", "endereco": "Rua 18, 118", "telefone": "(11) 90000-0018", "forno_instalado": "Forno 3" },
+  { "nome": "Cliente 19", "endereco": "Rua 19, 119", "telefone": "(11) 90000-0019", "forno_instalado": "Forno 4" },
+  { "nome": "Cliente 20", "endereco": "Rua 20, 120", "telefone": "(11) 90000-0020", "forno_instalado": "Forno 5" }
+]

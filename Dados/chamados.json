@@ -1,0 +1,7 @@
+[
+  { "defeito": "Não esquenta", "descricao": "Demora 20 minutos para aquecer.", "status": "Aberto", "data": "2025-09-20", "telefone_cliente": "(11) 90000-0001", "endereco": "Rua 1, 101" },
+  { "defeito": "Timer quebrado", "descricao": "Timer não funciona.", "status": "Finalizado", "data": "2025-09-18", "telefone_cliente": "(11) 90000-0002", "endereco": "Rua 2, 102" },
+  { "defeito": "Porta solta", "descricao": "A porta não fecha direito.", "status": "Aberto", "data": "2025-09-19", "telefone_cliente": "(11) 90000-0003", "endereco": "Rua 3, 103" },
+  { "defeito": "Ruído alto", "descricao": "Faz barulho estranho ao ligar.", "status": "Aberto", "data": "2025-09-17", "telefone_cliente": "(11) 90000-0004", "endereco": "Rua 4, 104" },
+  { "defeito": "Luz apagada", "descricao": "O display não acende.", "status": "Finalizado", "data": "2025-09-16", "telefone_cliente": "(11) 90000-0005", "endereco": "Rua 5, 105" }
+]
