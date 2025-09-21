@@ -1,7 +1,102 @@
 [
-  { "defeito": "Não esquenta", "descricao": "Demora 20 minutos para aquecer.", "status": "Aberto", "data": "2025-09-20", "telefone_cliente": "(11) 90000-0001", "endereco": "Rua 1, 101" },
-  { "defeito": "Timer quebrado", "descricao": "Timer não funciona.", "status": "Finalizado", "data": "2025-09-18", "telefone_cliente": "(11) 90000-0002", "endereco": "Rua 2, 102" },
-  { "defeito": "Porta solta", "descricao": "A porta não fecha direito.", "status": "Aberto", "data": "2025-09-19", "telefone_cliente": "(11) 90000-0003", "endereco": "Rua 3, 103" },
-  { "defeito": "Ruído alto", "descricao": "Faz barulho estranho ao ligar.", "status": "Aberto", "data": "2025-09-17", "telefone_cliente": "(11) 90000-0004", "endereco": "Rua 4, 104" },
-  { "defeito": "Luz apagada", "descricao": "O display não acende.", "status": "Finalizado", "data": "2025-09-16", "telefone_cliente": "(11) 90000-0005", "endereco": "Rua 5, 105" }
+  {
+    "id": 1,
+    "forno": "Forno Elétrico X",
+    "defeito": "Não esquenta direito",
+    "status": "Aberto",
+    "responsavel": "João",
+    "contato": "(11) 90000-0001",
+    "endereco": "Rua 1, 101",
+    "detalhe": "O forno demora mais de 20 minutos para aquecer corretamente."
+  },
+  {
+    "id": 2,
+    "forno": "Forno Fischer",
+    "defeito": "Timer quebrado",
+    "status": "Finalizado",
+    "responsavel": "João",
+    "contato": "(11) 90000-0002",
+    "endereco": "Rua 2, 102",
+    "detalhe": "O timer não está funcionando e precisa ser substituído."
+  },
+  {
+    "id": 3,
+    "forno": "Forno Elétrico Y",
+    "defeito": "Porta solta",
+    "status": "Aberto",
+    "responsavel": "João",
+    "contato": "(11) 90000-0003",
+    "endereco": "Rua 3, 103",
+    "detalhe": "A porta não fecha corretamente, deixando o forno escapar calor."
+  },
+  {
+    "id": 4,
+    "forno": "Forno Elétrico Z",
+    "defeito": "Ruído alto",
+    "status": "Aberto",
+    "responsavel": "João",
+    "contato": "(11) 90000-0004",
+    "endereco": "Rua 4, 104",
+    "detalhe": "Faz barulho estranho ao ligar, pode ser ventilador ou motor solto."
+  },
+  {
+    "id": 5,
+    "forno": "Forno Elétrico W",
+    "defeito": "Luz apagada",
+    "status": "Finalizado",
+    "responsavel": "João",
+    "contato": "(11) 90000-0005",
+    "endereco": "Rua 5, 105",
+    "detalhe": "O display não acende, a lâmpada interna precisa ser substituída."
+  },
+  {
+    "id": 6,
+    "forno": "Forno Elétrico A",
+    "defeito": "Resistência queimada",
+    "status": "Aberto",
+    "responsavel": "João",
+    "contato": "(11) 90000-0006",
+    "endereco": "Rua 6, 106",
+    "detalhe": "A resistência não aquece mais, precisa ser trocada."
+  },
+  {
+    "id": 7,
+    "forno": "Forno Elétrico B",
+    "defeito": "Botão quebrado",
+    "status": "Aberto",
+    "responsavel": "João",
+    "contato": "(11) 90000-0007",
+    "endereco": "Rua 7, 107",
+    "detalhe": "O botão liga/desliga não funciona corretamente."
+  },
+  {
+    "id": 8,
+    "forno": "Forno Elétrico C",
+    "defeito": "Ventoinha parada",
+    "status": "Finalizado",
+    "responsavel": "João",
+    "contato": "(11) 90000-0008",
+    "endereco": "Rua 8, 108",
+    "detalhe": "A ventoinha interna não está girando."
+  },
+  {
+    "id": 9,
+    "forno": "Forno Elétrico D",
+    "defeito": "Display travado",
+    "status": "Aberto",
+    "responsavel": "João",
+    "contato": "(11) 90000-0009",
+    "endereco": "Rua 9, 109",
+    "detalhe": "O display congela ao ligar, impossibilitando a operação."
+  },
+  {
+    "id": 10,
+    "forno": "Forno Elétrico E",
+    "defeito": "Porta emperrada",
+    "status": "Finalizado",
+    "responsavel": "João",
+    "contato": "(11) 90000-0010",
+    "endereco": "Rua 10, 110",
+    "detalhe": "A porta está emperrando ao abrir e fechar, precisa lubrificação."
+  }
 ]

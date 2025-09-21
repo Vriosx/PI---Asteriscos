@@ -1,14 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, FlatList, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import produtos from "../Dados/pecas.json"
 
-const produtos = [
-  { id: "1", nome: "Timer Fischer Forno Elétrico 120Min Eos", preco: 25.20, img: "https://via.placeholder.com/80" },
-  { id: "2", nome: "Timer Fischer Forno Elétrico 120Min Eos", preco: 25.20, img: "https://via.placeholder.com/80" },
-  { id: "3", nome: "Timer Fischer Forno Elétrico 120Min Eos", preco: 25.20, img: "https://via.placeholder.com/80" },
-];
 
 export default function ComprarPecasScreen() {
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Comprar peças</Text>
@@ -18,22 +15,26 @@ export default function ComprarPecasScreen() {
         <Ionicons name="cart-outline" size={28} color="#fff" />
       </View>
 
-      <FlatList
-        data={produtos}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={{ uri: item.img }} style={styles.img} />
-            <View style={{ flex: 1 }}>
-              <Text style={styles.nome}>{item.nome}</Text>
-              <Text style={styles.preco}>R$ {item.preco.toFixed(2)}</Text>
-              <TouchableOpacity style={styles.btnAdd}>
-                <Text style={{ color: "#fff", fontWeight: "bold" }}>Adicionar ao carrinho</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        )}
-      />
+    <FlatList
+  data={produtos}
+  keyExtractor={(item) => item.id}
+  renderItem={({ item }) => (
+    <View style={styles.card}>
+      <Image source={{ uri: item.img }} style={styles.img} />
+      <View style={{ flex: 1 }}>
+        <Text style={styles.nome}>{item.nome}</Text>
+        <Text style={styles.preco}>R$ {item.valor.toFixed(2)}</Text>
+        <Text style={{ color: "#aaa", marginBottom: 6 }}>Estoque: {item.estoque}</Text>
+        <TouchableOpacity style={styles.btnAdd}>
+          <Text style={{ color: "#fff", fontWeight: "bold" }}>Adicionar ao carrinho</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  )}
+/>
+
+
+
     </View>
   );
 }

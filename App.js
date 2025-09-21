@@ -15,6 +15,8 @@ import CarrinhoScreen from "./screens/CarrinhoScreen"; // Admin
 import ComprarPecasScreen from "./screens/ComprarPecasScreen"; // Admin
 import DetalheChamado from "./screens/DetalheChamadoScreen";
 
+// --- IMPORT DO JSON DE ADMINS ---
+import admins from "./Dados/admins.json";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -25,13 +27,20 @@ function LoginScreen({ navigation }) {
   const [senha, setSenha] = useState("");
 
   const handleLogin = () => {
+    // Login do admin principal
     if (email === "admin" && senha === "admin") {
       navigation.replace("HomeTabsAdmin");
-    } else if (email && senha) {
-      navigation.replace("HomeTabsCliente");
-    } else {
-      Alert.alert("Erro", "Digite email e senha válidos!");
+      return;
     }
+
+    // Login de outro usuário do JSON
+    const usuario = admins.find(u => u.email === email && u.senha === senha && email !== "admin");
+    if (usuario) {
+      navigation.replace("HomeTabsCliente");
+      return;
+    }
+
+    Alert.alert("Erro", "Email ou senha inválidos!");
   };
 
   return (
@@ -143,14 +152,10 @@ export default function App() {
         {/* Tabs Admin */}
         <Stack.Screen name="HomeTabsAdmin" component={BottomTabsAdmin} />
 
-        {/* ChamadoCliente2 e Notificações */}
+        {/* Outras telas */}
         <Stack.Screen name="ChamadoCliente2" component={ChamadoCliente2} />
         <Stack.Screen name="NotificacaoCliente" component={NotificacaoCliente} />
-
         <Stack.Screen name="DetalheChamado" component={DetalheChamado} />
-
-
-        
       </Stack.Navigator>
     </NavigationContainer>
   );

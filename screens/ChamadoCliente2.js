@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { addChamado } from '../Dados/ChamadoMock';
 
-export default function AbrirChamadoScreen({ navigation }) {
+export default function AbrirChamadoDetalheScreen({ navigation }) {
   const [assunto, setAssunto] = useState('');
   const [descricao, setDescricao] = useState('');
   const [imageUri, setImageUri] = useState(null); 
@@ -40,8 +41,14 @@ export default function AbrirChamadoScreen({ navigation }) {
       return;
     }
 
-    console.log('Chamado enviado!');
-    // Redireciona para a tela de Notificações do cliente
+    // Adiciona no mock de chamados
+    addChamado({
+      assunto,
+      descricao,
+      imagem: imageUri || null,
+    });
+
+    // Redireciona para a tela de notificações
     navigation.navigate('NotificacaoCliente');
   };
 
@@ -83,64 +90,17 @@ export default function AbrirChamadoScreen({ navigation }) {
         color="#4E89AE" 
         onPress={handleSubmit}  
       />
-
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#06101B',
-    padding: 20,
-  },
-  title: {
-    fontSize: 30,
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  input: {
-    height: 40,
-    width: '100%',
-    backgroundColor: '#333333',
-    color: '#FFFFFF',
-    paddingHorizontal: 10,
-    marginVertical: 10,
-    borderRadius: 5,
-  },
-  textArea: {
-    height: 120, 
-    textAlignVertical: 'top', 
-  },
-  imageContainer: {
-    alignItems: 'center',
-    marginVertical: 20,
-  },
-  imageWrapper: {
-    width: 300, 
-    height: 150, 
-    borderRadius: 12, 
-    borderWidth: 3, 
-    borderColor: '#4E89AE', 
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1A1A1A', 
-  },
-  image: {
-    width: '60%', 
-    height: '100%', 
-    borderRadius: 8, 
-  },
-  imageText: {
-    color: '#A0A0A0',
-    fontSize: 14,
-  },
-  link: {
-    color: '#A0A0A0',
-    marginTop: 20,
-    textDecorationLine: 'underline',
-  },
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#06101B', padding: 20 },
+  title: { fontSize: 30, color: '#fff', fontWeight: 'bold', marginBottom: 20 },
+  input: { height: 40, width: '100%', backgroundColor: '#333333', color: '#fff', paddingHorizontal: 10, marginVertical: 10, borderRadius: 5 },
+  textArea: { height: 120, textAlignVertical: 'top' },
+  imageContainer: { alignItems: 'center', marginVertical: 20 },
+  imageWrapper: { width: 300, height: 150, borderRadius: 12, borderWidth: 3, borderColor: '#4E89AE', justifyContent: 'center', alignItems: 'center', backgroundColor: '#1A1A1A' },
+  image: { width: '60%', height: '100%', borderRadius: 8 },
+  imageText: { color: '#A0A0A0', fontSize: 14 },
 });

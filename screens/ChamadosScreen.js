@@ -1,35 +1,29 @@
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, FlatList } from "react-native";
+import React, { useState } from "react";
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
-const chamados = [
-  {
-    id: 1,
-    forno: "Forno Elétrico X",
-    defeito: "Não esquenta direito",
-    status: "Aberto",
-    responsavel: "João",
-    contato: "(11) 99999-9999",
-    endereco: "Rua Brooklin, 279",
-    detalhe: "O forno demora mais de 20 minutos para aquecer corretamente.",
-  },
-  {
-    id: 2,
-    forno: "Forno Fischer",
-    defeito: "Timer quebrado",
-    status: "Finalizado",
-    responsavel: "Maria",
-    contato: "(11) 98888-8888",
-    endereco: "Rua Augusta, 150",
-    detalhe: "O timer não está funcionando e precisa ser substituído.",
-  },
-];
+import chamadosJSON from "../Dados/chamados.json";
 
 export default function ChamadosScreen({ navigation }) {
+  const [chamados, setChamados] = useState(chamadosJSON);
+
+  // Função para atualizar o status de um chamado
+  const atualizarStatus = (id, novoStatus) => {
+    setChamados(prev =>
+      prev.map(chamado =>
+        chamado.id === id ? { ...chamado, status: novoStatus } : chamado
+      )
+    );
+  };
+
   const renderChamado = ({ item }) => (
     <TouchableOpacity
       style={styles.card}
-      onPress={() => navigation.navigate("DetalheChamado", { chamado: item })}
+      onPress={() =>
+        navigation.navigate("DetalheChamado", {
+          chamado: item,
+          atualizarStatus
+        })
+      }
     >
       <View style={styles.cardHeader}>
         <Ionicons name="flame-outline" size={22} color="#fff" />
@@ -79,43 +73,11 @@ export default function ChamadosScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#001428", padding: 20 },
-  title: {
-    color: "#fff",
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  card: {
-    backgroundColor: "#0d2b45",
-    padding: 15,
-    borderRadius: 12,
-    marginBottom: 15,
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  cardHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 8,
-  },
+  title: { color: "#fff", fontSize: 22, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
+  card: { backgroundColor: "#0d2b45", padding: 15, borderRadius: 12, marginBottom: 15, shadowColor: "#000", shadowOpacity: 0.3, shadowRadius: 4, elevation: 5 },
+  cardHeader: { flexDirection: "row", alignItems: "center", marginBottom: 8 },
   nome: { color: "#fff", fontSize: 18, fontWeight: "bold", marginLeft: 8 },
   textoSecundario: { color: "#bbb", marginTop: 2, fontSize: 14 },
-  status: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 10,
-    paddingVertical: 4,
-    paddingHorizontal: 10,
-    borderRadius: 8,
-    alignSelf: "flex-start",
-  },
-  statusText: {
-    color: "#fff",
-    fontWeight: "bold",
-    marginLeft: 5,
-    fontSize: 14,
-  },
+  status: { flexDirection: "row", alignItems: "center", marginTop: 10, paddingVertical: 4, paddingHorizontal: 10, borderRadius: 8, alignSelf: "flex-start" },
+  statusText: { color: "#fff", fontWeight: "bold", marginLeft: 5, fontSize: 14 },
 });
