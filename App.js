@@ -14,6 +14,8 @@ import ChamadosScreen from "./screens/ChamadosScreen"; // Admin
 import CarrinhoScreen from "./screens/CarrinhoScreen"; // Admin
 import ComprarPecasScreen from "./screens/ComprarPecasScreen"; // Admin
 import DetalheChamado from "./screens/DetalheChamadoScreen";
+import QRCodeScannerScreen from "./screens/QRCodeScannerScreen";
+
 
 // --- IMPORT DO JSON DE ADMINS ---
 import admins from "./Dados/admins.json";
@@ -156,6 +158,9 @@ export default function App() {
         <Stack.Screen name="ChamadoCliente2" component={ChamadoCliente2} />
         <Stack.Screen name="NotificacaoCliente" component={NotificacaoCliente} />
         <Stack.Screen name="DetalheChamado" component={DetalheChamado} />
+
+        <Stack.Screen name="QRCodeScanner" component={QRCodeScannerScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
