@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Button, Alert } from "react-native";
-import { BarCodeScanner } from "expo-barcode-scanner";
-import fornos from "../Dados/fornos.json"; // ajuste o caminho conforme sua pasta "dados"
+import { Camera } from "expo-camera";
+import fornos from "../Dados/fornos.json";
 
 export default function QRCodeScannerScreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
-  // Pedir permissão para usar a câmera
   useEffect(() => {
     (async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      const { status } = await Camera.requestCameraPermissionsAsync();
       setHasPermission(status === "granted");
     })();
   }, []);
@@ -18,18 +17,16 @@ export default function QRCodeScannerScreen({ navigation }) {
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
 
-    // Supondo que o QR code contenha o id do forno (ex: "forno1")
     const fornoEncontrado = fornos.find((f) => f.id === data);
 
     if (fornoEncontrado) {
-      // Navega de volta e envia os dados do forno
       navigation.navigate("AbrirChamado", {
         modelo: fornoEncontrado.modelo,
         endereco: fornoEncontrado.endereco,
       });
     } else {
       Alert.alert("Erro", "Forno não encontrado no banco de dados!");
-      setScanned(false); // Libera para escanear de novo
+      setScanned(false); // Libera para escanear novamente
     }
   };
 
@@ -48,7 +45,7 @@ export default function QRCodeScannerScreen({ navigation }) {
         <Button
           title="Tentar novamente"
           onPress={async () => {
-            const { status } = await BarCodeScanner.requestPermissionsAsync();
+            const { status } = await Camera.requestCameraPermissionsAsync();
             setHasPermission(status === "granted");
           }}
         />
@@ -58,9 +55,9 @@ export default function QRCodeScannerScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+      <Camera
         style={StyleSheet.absoluteFillObject}
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
       />
 
       {scanned && (

@@ -17,25 +17,21 @@ import DetalheChamado from "./screens/DetalheChamadoScreen";
 import QRCodeScannerScreen from "./screens/QRCodeScannerScreen";
 
 
-// --- IMPORT DO JSON DE ADMINS ---
 import admins from "./Dados/admins.json";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// --- LOGIN SCREEN ---
 function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
   const handleLogin = () => {
-    // Login do admin principal
     if (email === "admin" && senha === "admin") {
       navigation.replace("HomeTabsAdmin");
       return;
     }
 
-    // Login de outro usuário do JSON
     const usuario = admins.find(u => u.email === email && u.senha === senha && email !== "admin");
     if (usuario) {
       navigation.replace("HomeTabsCliente");
