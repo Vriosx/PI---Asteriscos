@@ -15,6 +15,7 @@ import CarrinhoScreen from "./screens/CarrinhoScreen"; // Admin
 import ComprarPecasScreen from "./screens/ComprarPecasScreen"; // Admin
 import DetalheChamado from "./screens/DetalheChamadoScreen";
 import QRCodeScannerScreen from "./screens/QRCodeScannerScreen";
+import { CarrinhoProvider } from "./screens/CarrinhoContext";
 
 
 import admins from "./Dados/admins.json";
@@ -66,6 +67,7 @@ function LoginScreen({ navigation }) {
         <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
       </TouchableOpacity>
     </View>
+    
   );
 }
 
@@ -140,6 +142,7 @@ function BottomTabsAdmin() {
 // --- APP PRINCIPAL ---
 export default function App() {
   return (
+    <CarrinhoProvider>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={LoginScreen} />
@@ -159,6 +162,7 @@ export default function App() {
 
       </Stack.Navigator>
     </NavigationContainer>
+    </CarrinhoProvider>
   );
 }
 
