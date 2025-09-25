@@ -20,14 +20,15 @@ export default function ComprarPecasScreen() {
   keyExtractor={(item) => item.id}
   renderItem={({ item }) => (
     <View style={styles.card}>
-      <Image source={{ uri: item.img }} style={styles.img} />
       <View style={{ flex: 1 }}>
         <Text style={styles.nome}>{item.nome}</Text>
         <Text style={styles.preco}>R$ {item.valor.toFixed(2)}</Text>
         <Text style={{ color: "#aaa", marginBottom: 6 }}>Estoque: {item.estoque}</Text>
+
         <TouchableOpacity style={styles.btnAdd}>
           <Text style={{ color: "#fff", fontWeight: "bold" }}>Adicionar ao carrinho</Text>
         </TouchableOpacity>
+        
       </View>
     </View>
   )}
@@ -58,8 +59,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 15,
   },
-  img: { width: 80, height: 80, marginRight: 10 },
-  nome: { color: "#fff", fontWeight: "bold", marginBottom: 5 },
-  preco: { color: "#0f0", marginBottom: 8 },
-  btnAdd: { backgroundColor: "#0077ff", padding: 8, borderRadius: 6, alignItems: "center" },
 });
