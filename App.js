@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 // --- IMPORT DAS TELAS ---
-import AbrirChamadoScreen from "./screens/AbrirChamadoCliente"; 
+import AbrirChamadoScreen from "./screens/AbrirChamadoScreen"; 
 import ChamadoCliente2 from "./screens/ChamadoCliente2"; 
 import JaTemChamado from "./screens/PesquisaChamadoCliente";
 import NotificacaoCliente from "./screens/NotificacaoCliente";

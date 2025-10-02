@@ -1,7 +1,32 @@
 [
-  { "modelo": "Forno 1", "endereco": "Rua 1, 101", "data_instalacao": "2024-01-10" },
-  { "modelo": "Forno 2", "endereco": "Rua 2, 102", "data_instalacao": "2024-02-15" },
-  { "modelo": "Forno 3", "endereco": "Rua 3, 103", "data_instalacao": "2024-03-20" },
-  { "modelo": "Forno 4", "endereco": "Rua 4, 104", "data_instalacao": "2024-04-25" },
-  { "modelo": "Forno 5", "endereco": "Rua 5, 105", "data_instalacao": "2024-05-30" }
+  { 
+    "id": "FORNO001", 
+    "modelo": "FORNO TURBO ELÉTRICO 10 ESTEIRAS FTE-300 TRIFÁSICO",
+    "endereco": "Av. Industrial, 1250 - Centro Industrial, São Paulo - SP",
+    "data_instalacao": "2024-01-10" 
+  },
+  { 
+    "id": "FORNO002",
+    "modelo": "FORNO ROTATIVO A GÁS FRG-450 COM INJEÇÃO DE VAPOR", 
+    "endereco": "Rua das Indústrias, 567 - Polo Industrial, Campinas - SP",
+    "data_instalacao": "2024-02-15" 
+  },
+  { 
+    "id": "FORNO003",
+    "modelo": "FORNO TÚNEL CONTÍNUO FTC-600 ELETRO-GÁS",
+    "endereco": "Estrada do Contorno, 890 - Distrito Industrial, Rio de Janeiro - RJ", 
+    "data_instalacao": "2024-03-20" 
+  },
+  { 
+    "id": "FORNO004",
+    "modelo": "FORNO PIZZA RÁPIDO FPR-200 PROFISSIONAL",
+    "endereco": "Rua Comercial, 234 - Centro, Belo Horizonte - MG",
+    "data_instalacao": "2024-04-25" 
+  },
+  { 
+    "id": "FORNO005",
+    "modelo": "FORNO CONVECÇÃO INDUSTRIAL FCI-180 DIGITAL", 
+    "endereco": "Alameda das Oficinas, 678 - Zona Industrial, Porto Alegre - RS",
+    "data_instalacao": "2024-05-30" 
+  }
 ]
